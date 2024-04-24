@@ -55,9 +55,7 @@ def purchase_pred(input_data):
 # Streamlit sidebar
 with st.sidebar:
     with st.sidebar.expander(":Red[Info About the Web App]"):
-        st.info("Unleash the power of data exploration, visualization, and customer churn prediction with this dynamic web application, where users can delve into data, craft insightful visualizations, and harness machine learning models behind the scenes.")
-        # Apply CSS to change sidebar color
-
+        st.info("This Customer Churn Prediction Web Application empowers users to dive deep into their data, create meaningful visualizations, and leverage advanced machine learning models to predict customer churn. Designed with user-friendliness and interactivity in mind, this web application offers a seamless experience for both data exploration and predictive analytics.")
 
     # st.image("https://images.datacamp.com/image/upload/v1648487930/shutterstock_1624376548_b831bdf4c1.jpg")
     st.write("---")
