@@ -48,9 +48,9 @@ def purchase_pred(input_data):
     print(prediction)
     
     if prediction[0] == 0:
-        return "The person did not purchase the product"
+        return "The forecast indicates that the person will not churn."
     else:
-        return "The person purchased the product"
+        return "The forecast suggests that the person will churn."
 
 # Streamlit sidebar
 with st.sidebar:
