@@ -60,20 +60,19 @@ def purchase_pred(input_data):
 # Figure 1
 churn_counts=df["Churn"].value_counts().reset_index()
 churn_counts.columns = ['Churn', 'Count']
+
 fig1 = px.bar(churn_counts, x="Churn", y="Count", color='Churn', 
-              color_discrete_sequence=['#636EFA', '#EF553B'], 
-              labels={'Churn': 'Churn', 'Count': 'Count'}, 
-              text='Count', template='plotly', 
-              width=600, height=400)
+            labels={'Churn': 'Churn', 'Count': 'Count'}, 
+            text='Count', template='plotly_dark', 
+            width=600, height=400)
 
 fig1.update_layout(
-    xaxis_title="Churn",            # X-axis label
-    yaxis_title="Count",            # Y-axis label
-    legend_title="Churn",           # Legend title
-    title_x=0.5,                    # Title alignment
-    title_font=dict(size=20),       
+    xaxis_title="Churn",            
+    yaxis_title="Count",  
+    legend_title="Churn",                
 )
 
+# Figure 2
 contract_counts = df['ContractRenewal'].value_counts()
 data_plan_counts = df['DataPlan'].value_counts()
 fig2= make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
@@ -87,6 +86,21 @@ fig2.update_traces(hole=.4, hoverinfo="label+percent+name")
 # Figure 3
 nominal_cols=['Churn','DataPlan','ContractRenewal']
 num_cols=['AccountWeeks','DataUsage','DayMins','DayCalls','MonthlyCharge','OverageFee','RoamMins']
+
+# Figure 4
+fig4 = go.Figure(data=go.Heatmap(
+    z=df.corr(), 
+    x=df.columns,
+    y=df.columns,
+    colorscale='Viridis',
+    hoverongaps=False  
+))
+
+fig4.update_layout(
+    xaxis=dict(title='Features'),
+    yaxis=dict(title='Features'),
+    title='Correlation Heatmap'
+)
 
 
 
@@ -186,6 +200,7 @@ if selected == "Visualisation":
         fig3.update_layout(font=dict(family='Arial',size=12,color='black'),legend=dict(title='Legend Title',font=dict(family='Arial',size=10,color='black')))
         st.plotly_chart(fig3)
     
+    st.divider()
     col1, col2 = st.columns([0.1, 0.9])
     with col1:
         pass
@@ -194,6 +209,7 @@ if selected == "Visualisation":
         st.markdown("<h2 style='text-align: center;'>Count Plot Representing the Churn Counts</h2>", unsafe_allow_html=True)
         st.plotly_chart(fig1)
         
+    st.divider()    
     col1, col2 = st.columns([0.1, 0.9])
     with col1:
         pass
@@ -201,12 +217,23 @@ if selected == "Visualisation":
     with col2:
         st.markdown("<h2 style='text-align: center;'>Pie Chart Representing the Distribution of Contract Renewal and Data Plan</h2>", unsafe_allow_html=True)
         st.plotly_chart(fig2, use_container_width=True)
+        
+    st.divider()
+    col1, col2 = st.columns([0.1, 0.9])    
+    with col1:
+        pass
+
+    with col2:
+        st.markdown("<h2 style='text-align: center;'>Correlation Heatmap of Numerical Data</h2>", unsafe_allow_html=True)
+        st.plotly_chart(fig4, use_container_width=True)        
 
 
     
 if selected == "Prediction":
     def main():
         st.markdown("<h1 style='text-align: center;'> Customer Churn Prediction Web App 💼📉</h1>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align: center;'>Please enter the following information to predict customer churn:</h4>", unsafe_allow_html=True)
+        st.divider()
         
         col1,col2,col3=st.columns(3)
         # Getting the input data
@@ -214,16 +241,16 @@ if selected == "Prediction":
             AccountWeeks = st.text_input("AccountWeeks")
             
         with col2:
-            ContractRenewal = st.text_input("ContractRenewal")
+            ContractRenewal = st.text_input("ContractRenewal->(0/1)")
         
         with col3:
-            DataPlan = st.text_input("DataPlan")
+            DataPlan = st.text_input("DataPlan->(0/1)")
         
         with col1:
             DataUsage = st.text_input("DataUsage")
         
         with col2:
-            CustServCalls = st.text_input("CustServCalls")
+            CustServCalls = st.text_input("CustServCalls->(1 to 8)")
         
         with col3:
             DayMins = st.text_input("DayMins")
