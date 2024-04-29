@@ -1,10 +1,15 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from pathlib import Path
+import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 import numpy as np
+import plotly.express as px
 import os
 import pickle
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 # Set page configuration
@@ -51,6 +56,39 @@ def purchase_pred(input_data):
         return "The forecast indicates that the person will not churn."
     else:
         return "The forecast suggests that the person will churn."
+
+# Figure 1
+churn_counts=df["Churn"].value_counts().reset_index()
+churn_counts.columns = ['Churn', 'Count']
+fig1 = px.bar(churn_counts, x="Churn", y="Count", color='Churn', 
+              color_discrete_sequence=['#636EFA', '#EF553B'], 
+              labels={'Churn': 'Churn', 'Count': 'Count'}, 
+              text='Count', template='plotly', 
+              width=600, height=400)
+
+fig1.update_layout(
+    xaxis_title="Churn",            # X-axis label
+    yaxis_title="Count",            # Y-axis label
+    legend_title="Churn",           # Legend title
+    title_x=0.5,                    # Title alignment
+    title_font=dict(size=20),       
+)
+
+contract_counts = df['ContractRenewal'].value_counts()
+data_plan_counts = df['DataPlan'].value_counts()
+fig2= make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]], 
+                    subplot_titles=("Contract Renewal", "Data Plan"))
+fig2.add_trace(go.Pie(labels=contract_counts.index.map({0: 'Not Renewed', 1: 'Renewed'}), 
+                    values=contract_counts.values, name="Contract Renewal"),1, 1)
+fig2.add_trace(go.Pie(labels=data_plan_counts.index.map({0: 'No Data Plan', 1: 'Has Data Plan'}), 
+                    values=data_plan_counts.values, name="Data Plan"),1, 2)
+fig2.update_traces(hole=.4, hoverinfo="label+percent+name")
+
+# Figure 3
+nominal_cols=['Churn','DataPlan','ContractRenewal']
+num_cols=['AccountWeeks','DataUsage','DayMins','DayCalls','MonthlyCharge','OverageFee','RoamMins']
+
+
 
 # Streamlit sidebar
 with st.sidebar:
@@ -134,8 +172,38 @@ if selected == "Data Exploration":
 
 
 if selected == "Visualisation":
-    pass
+    st.markdown("<h1 style='text-align: center;'>Data Visualisation</h1>", unsafe_allow_html=True)
+    st.divider()
+    st.markdown("<h2 style='text-align: center;'>Custom Scatter Plot</h2>", unsafe_allow_html=True)
+    col1,col2=st.columns([0.25,0.75])
+    with col1:
+        x_axis=st.selectbox('x-axis:',num_cols,index=0)
+        y_axis=st.selectbox('y-axis:',num_cols,index=1)
+        c_axis=st.selectbox('color',nominal_cols)
+    with col2:
+        fig3,ax=plt.subplots()
+        fig3 = px.scatter(df, x=x_axis, y=y_axis, color=c_axis)
+        fig3.update_layout(font=dict(family='Arial',size=12,color='black'),legend=dict(title='Legend Title',font=dict(family='Arial',size=10,color='black')))
+        st.plotly_chart(fig3)
+    
+    col1, col2 = st.columns([0.1, 0.9])
+    with col1:
+        pass
 
+    with col2:
+        st.markdown("<h2 style='text-align: center;'>Count Plot Representing the Churn Counts</h2>", unsafe_allow_html=True)
+        st.plotly_chart(fig1)
+        
+    col1, col2 = st.columns([0.1, 0.9])
+    with col1:
+        pass
+
+    with col2:
+        st.markdown("<h2 style='text-align: center;'>Pie Chart Representing the Distribution of Contract Renewal and Data Plan</h2>", unsafe_allow_html=True)
+        st.plotly_chart(fig2, use_container_width=True)
+
+
+    
 if selected == "Prediction":
     def main():
         st.markdown("<h1 style='text-align: center;'> Customer Churn Prediction Web App 💼📉</h1>", unsafe_allow_html=True)
