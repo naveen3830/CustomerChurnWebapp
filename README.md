@@ -2,7 +2,7 @@
 
 ℹ️ This repository contains code for a Customer Churn Prediction Web Application developed using Python and deployed with Streamlit.
 
-📁 **Data**: Contains sample datasets for customer churn prediction.
+📁 **Data**: Contains data for customer churn prediction.
 
 📄 **CustomerChurn.py**: Python script containing the code for the web application.
 
