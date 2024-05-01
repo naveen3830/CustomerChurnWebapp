@@ -24,11 +24,6 @@ for file_name in os.listdir(Path(data_folder_path)):
         df = pd.read_csv(data_file_path)
         break  
     
-# Load the first CSV file found in the folder
-# Loading the data and saved model
-# data_file_path = "D:/Project/Customer-Churn/Data/telecom_churn.csv"
-# Load data directly from the file
-# df = pd.read_csv(data_file_path)
 
 loaded_model1=pickle.load(open('rf1_model.sav','rb'))
 
@@ -127,7 +122,8 @@ with st.sidebar:
         '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://github.com/naveen3830"> @naveen</a></h6>',
             unsafe_allow_html=True,
         )
-
+    
+    
 
 if selected == "Data Exploration": 
     st.markdown("<h1 style='text-align: center;'>Customer Churn Analysis 💼📉</h1>", unsafe_allow_html=True)
@@ -228,7 +224,6 @@ if selected == "Visualisation":
         st.plotly_chart(fig4, use_container_width=True)        
 
 
-    
 if selected == "Prediction":
     def main():
         st.markdown("<h1 style='text-align: center;'> Customer Churn Prediction Web App 💼📉</h1>", unsafe_allow_html=True)
