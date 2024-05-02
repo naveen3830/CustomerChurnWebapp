@@ -118,7 +118,7 @@ with st.sidebar:
     # choice = st.radio("Navigation", ["Data Exploration", "Plots", "ML", "Download"])
     st.divider()
     st.markdown(
-        '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://github.com/naveen3830"> @naveen</a></h6>',
+        '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://github.com/naveen3830"> @Naveen</a></h6>',
             unsafe_allow_html=True,
         )
     
