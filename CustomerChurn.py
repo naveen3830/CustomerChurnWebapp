@@ -104,7 +104,6 @@ with st.sidebar:
     with st.sidebar.expander(":Red[Info About the Web App]"):
         st.info("This Customer Churn Prediction Web Application empowers users to dive deep into their data, create meaningful visualizations, and leverage advanced machine learning models to predict customer churn. Designed with user-friendliness and interactivity in mind, this web application offers a seamless experience for both data exploration and predictive analytics.")
 
-    # st.image("https://images.datacamp.com/image/upload/v1648487930/shutterstock_1624376548_b831bdf4c1.jpg")
     st.write("---")
     selected = option_menu('Main Menu',
                         ['Data Exploration',
@@ -134,7 +133,7 @@ if selected == "Data Exploration":
     st.divider()
 # Centered Image
     st.markdown(
-    "<div style='text-align:center'><img src='https://daxg39y63pxwu.cloudfront.net/images/blog/churn-models/Customer_Churn_Prediction_Models_in_Machine_Learning.png' width='700'></div>",
+    "<div style='text-align:center'><img src='https://miro.medium.com/max/844/1*MyKDLRda6yHGR_8kgVvckg.png' width='700'></div>",
     unsafe_allow_html=True
     )
     
