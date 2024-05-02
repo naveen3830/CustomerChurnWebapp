@@ -122,8 +122,6 @@ with st.sidebar:
             unsafe_allow_html=True,
         )
     
-    
-
 if selected == "Data Exploration": 
     st.markdown("<h1 style='text-align: center;'>Customer Churn Analysis 💼📉</h1>", unsafe_allow_html=True)
     st.divider()
@@ -273,7 +271,4 @@ if selected == "Prediction":
     if __name__ == '__main__':
         main()
 
-
-if selected == "Download":
-    pass
 
