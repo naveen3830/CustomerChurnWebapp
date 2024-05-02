@@ -97,8 +97,6 @@ fig4.update_layout(
     title='Correlation Heatmap'
 )
 
-
-
 # Streamlit sidebar
 with st.sidebar:
     with st.sidebar.expander(":Red[Info About the Web App]"):
@@ -259,7 +257,6 @@ if selected == "Prediction":
         with col1:
             RoamMins = st.text_input("RoamMins")
     
-        # Code for prediction
         Purchased = ''
     
         if st.button("Result"):
