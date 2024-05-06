@@ -21,6 +21,8 @@
 - [Streamlit](https://streamlit.io/): Web application framework used for deployment.
 - [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html): Machine learning model used for customer churn prediction.
 
+🌐 **Website**: [Customer Churn Prediction Web App](https://customer-churn-2348439.streamlit.app/)
+
 📝 **Note**
 - Feel free to replace the sample datasets with your data for custom analysis.
 - Modify and enhance the code as needed for your specific requirements.
