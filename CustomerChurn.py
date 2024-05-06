@@ -14,7 +14,6 @@ from plotly.subplots import make_subplots
 
 # Set page configuration
 st.set_page_config(layout="wide")
-
 data_folder_path = "Data"
 
 # Load data directly from the folder
@@ -41,6 +40,7 @@ def check(df):
     df_check.columns=['columns','Data Types','No of Unique Values','No of Duplicated Rows','No of Null Values']
     return df_check 
 
+# Function to input the data
 def purchase_pred(input_data):
     input_data_as_array=np.asarray(input_data,dtype=float)
     input_data_reshaped=input_data_as_array.reshape(1,-1)
@@ -112,14 +112,13 @@ with st.sidebar:
     
 with st.sidebar:
 
-    # st.title("Main Menu")
-    # choice = st.radio("Navigation", ["Data Exploration", "Plots", "ML", "Download"])
     st.divider()
     st.markdown(
         '<h6>Made in &nbsp<img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit logo" height="16">&nbsp by <a href="https://github.com/naveen3830"> @Naveen</a></h6>',
             unsafe_allow_html=True,
         )
-    
+
+# Data Exploration
 if selected == "Data Exploration": 
     st.markdown("<h1 style='text-align: center;'>Customer Churn Analysis 💼📉</h1>", unsafe_allow_html=True)
     st.divider()
@@ -134,7 +133,6 @@ if selected == "Data Exploration":
     )
     
     st.divider()
-
     option = st.selectbox("Select an option:", ["Show data in table", "Display data description", "Show dataset dimensions", "Verify data integrity", "Summarize numerical data statistics", "Summarize categorical data"])
 
     if option == "Show data in table":
@@ -175,7 +173,7 @@ if selected == "Data Exploration":
             des2 = categorical_df.describe()
             st.dataframe(des2)
 
-
+# Visualisation
 if selected == "Visualisation":
     st.markdown("<h1 style='text-align: center;'>Data Visualisation</h1>", unsafe_allow_html=True)
     st.divider()
@@ -218,7 +216,7 @@ if selected == "Visualisation":
         st.markdown("<h2 style='text-align: center;'>Correlation Heatmap of Numerical Data</h2>", unsafe_allow_html=True)
         st.plotly_chart(fig4, use_container_width=True)        
 
-
+# Prediction
 if selected == "Prediction":
     def main():
         st.markdown("<h1 style='text-align: center;'> Customer Churn Prediction Web App 💼📉</h1>", unsafe_allow_html=True)
