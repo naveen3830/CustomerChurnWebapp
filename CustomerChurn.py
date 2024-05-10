@@ -11,7 +11,6 @@ import pickle
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-
 # Set page configuration
 st.set_page_config(layout="wide")
 data_folder_path = "Data"
