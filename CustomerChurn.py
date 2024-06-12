@@ -128,8 +128,7 @@ if selected == "Data Exploration":
 # Centered Image
     st.markdown(
     "<div style='text-align:center'><img src='https://miro.medium.com/max/844/1*MyKDLRda6yHGR_8kgVvckg.png' width='700'></div>",
-    unsafe_allow_html=True
-    )
+    unsafe_allow_html=True)
     
     st.divider()
     option = st.selectbox("Select an option:", ["Show data in table", "Display data description", "Show dataset dimensions", "Verify data integrity", "Summarize numerical data statistics", "Summarize categorical data"])
