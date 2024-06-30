@@ -1,5 +1,5 @@
 # Customer Churn Prediction Web Application
-🌐 **Website**: [Customer Churn Prediction Web App](https://customer-churn-2348439.streamlit.app/)
+🌐 **Website**: [Customer Churn Prediction Web App](https://customerchurnwebapp.streamlit.app/)
 ---
 ℹ️ This repository contains code for a Customer Churn Prediction Web Application developed using Python and deployed with Streamlit.
 
