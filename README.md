@@ -16,7 +16,7 @@
 ---
 
 🚀 **Getting Started**
-1. Clone this repository: `git clone https://github.com/naveen3830/CustomerChurnProject.git`
+1. Clone this repository: `git clone https://github.com/naveen3830/CustomerWebapp.git`
 2. Install the required packages: `pip install -r requirements.txt`
 3. Run the web application: `streamlit run CustomerChurn.py`
 ---
