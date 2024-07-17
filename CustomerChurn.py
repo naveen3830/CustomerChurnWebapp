@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 # Set page configuration
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide",page_title="CustomerChurn App",page_icon='📉')
 data_folder_path = "Data"
 
 # Load data directly from the folder
